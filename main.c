@@ -14,7 +14,7 @@ int main() {
         switch (op){
 
         case 1:
-            cadastrocliente();
+            menucad();
             break;
 
         case 2:
@@ -27,10 +27,10 @@ int main() {
         }
 
         
-        printf("Deseja continuar?\n");
+        printf("Deseja utilizar o menu novamente?\n");
         printf("1 - Continuar\n");
         printf("0 - Parar\n");
             scanf("%i", &cont);
     }while (cont == 1);
-return 0;
+    return 0;
 }
