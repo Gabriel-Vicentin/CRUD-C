@@ -38,11 +38,7 @@ return 0;
             case 2:
                 listarcliente();
             break;
-
-            case 3:
-                atualizaruser();
-            break;
-
+            
             case 4:
                 printf("Saindo...\n");
             break;
