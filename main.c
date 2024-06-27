@@ -7,7 +7,7 @@ int main() {
     int op, cont;
     do{
     printf("escolha uma opcao \n");
-    printf("1 - cadastro cliente \n");
+    printf("1 - cadastro usuario \n");
     printf("2 - Cadastro produto \n");
         scanf("%i", &op);
 
@@ -25,11 +25,10 @@ int main() {
             printf("Opcao incorreta\n");
             break;
         }
-
         
         printf("Deseja utilizar o menu novamente?\n");
-        printf("1 - Continuar\n");
-        printf("0 - Parar\n");
+        printf("1 - Sim\n");
+        printf("0 - Não\n");
             scanf("%i", &cont);
     }while (cont == 1);
     return 0;
