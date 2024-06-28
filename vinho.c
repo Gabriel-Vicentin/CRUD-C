@@ -1,6 +1,7 @@
 #include "vinho.h"
 #include <stdio.h>
 #include <string.h>
+#include "cadastroqueijo.h"
 
 
 void cadastrarVinho(Vinho *vinho, int *nextId, const char *nome, const char *tipo, float preco) {

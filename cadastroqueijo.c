@@ -9,6 +9,7 @@ Produto produtos[MAX_PRODUTOS]; // Array de produtos
 int contador_produtos = 0; // Contador de produtos cadastrados
 
 void menu() {
+    limparTela();
     int opcao;
 
     do {
@@ -51,6 +52,7 @@ void menu() {
 }
 
 void cadastrarQueijo() {
+    limparTela();
     char resposta_cadastro = 's'; // Inicializa como 's' para entrar no loop
 
     while (contador_produtos < MAX_PRODUTOS && (resposta_cadastro == 's' || resposta_cadastro == 'S')) {
@@ -84,6 +86,7 @@ void cadastrarQueijo() {
 }
 
 void listarQueijos() {
+    limparTela();
     if (contador_produtos > 0) {
         printf("Lista De Queijos:\n");
         for (int i = 0; i < contador_produtos; i++) {
@@ -97,6 +100,7 @@ void listarQueijos() {
 }
 
 void alterarQueijo() {
+    limparTela();
 
     if (contador_produtos == 0) {
         printf("Não há queijos cadastrados para alterar.\n");
@@ -146,6 +150,7 @@ void alterarQueijo() {
 }
 
 void apagarQueijo() {
+    limparTela();
 
     if (contador_produtos == 0) {
         printf("Não possui queijos cadastrados para apagar.\n");

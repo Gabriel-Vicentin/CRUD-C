@@ -24,6 +24,7 @@ Pedido pedidos[MAX_PEDIDOS];
 int num_pedidos = 0;
 
 void listarProdutosvend() {
+    limparTela();
     if (contador_produtos > 0) {
         for (int i = 0; i < contador_produtos; i++) {
             printf("%d - %s\n", produtos[i].codigo, produtos[i].nome);
@@ -42,6 +43,7 @@ void listarProdutosvend() {
 }
 
 void pedido() {
+    limparTela();
     if (num_pedidos >= MAX_PEDIDOS) {
         printf("Limite de pedidos atingido.\n");
         return;
@@ -211,7 +213,7 @@ void finalizarCompra() {
 
     // Escrevendo os dados no arquivo
     fprintf(arquivo, "Produto: %s\n", nome);
-    fprintf(arquivo, "Preço total: %.2f\n", valor_total);
+    fprintf(arquivo, "Preco total: %.2f\n", valor_total);
     fprintf(arquivo, "Data: %02d-%02d-%04d\n\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
 
     // Fechando o arquivo
@@ -228,6 +230,7 @@ void finalizarCompra() {
 
 
 void menuCompras() {
+    limparTela();
     int opcao;
     do {
         limparTela();
