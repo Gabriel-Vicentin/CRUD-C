@@ -31,10 +31,13 @@ int main() {
             printf("Opcao incorreta\n");
             break;
         }
-        
-        printf("Deseja utilizar o menu novamente?\n");
-        printf("1 - Sim\n");
-        printf("0 - Não\n");
+        printf("|------------------------------------|\n");
+        printf("|             MENU                   |\n");
+        printf("| Deseja utilizar o menu novamente?  |\n");
+        printf("| 1 - Sim                            |\n");
+        printf("| 0 - Não                            |\n");
+        printf("|------------------------------------|\n");
+        printf("Escolha: ");
             scanf("%i", &cont);
     }while (cont == 1);
     return 0;

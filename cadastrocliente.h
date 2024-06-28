@@ -12,6 +12,7 @@ int user_count = 0;
 void menucad();
 void cadastrouser();
 void listarcliente();
+void atualizaruser();
 
 int inicio(){
     menucad();
@@ -21,12 +22,14 @@ return 0;
     void menucad(){
         int opc;
         do{
-            printf("   MENU   \n");
-            printf("1 - Cadastrar usuario\n");
-            printf("2 - Listar usuarios\n");
-            printf("3 - Atualizar cliente\n");
-            printf("4 - Sair\n");
-            printf("Escolha uma opcao: ");
+            printf("|---------------------------|\n");
+            printf("|           MENU            |\n");
+            printf("| 1 - Cadastrar usuario     |\n");
+            printf("| 2 - Listar usuarios       |\n");
+            printf("| 3 - Atualizar usuario     |\n");
+            printf("| 4 - Sair                  |\n");               
+            printf("|---------------------------|\n");
+            printf("| Escolha uma opcao:  ");
                 scanf("%d", &opc);
                 getchar();
 
@@ -38,7 +41,11 @@ return 0;
             case 2:
                 listarcliente();
             break;
-            
+
+            case 3:
+                atualizaruser();
+            break;
+
             case 4:
                 printf("Saindo...\n");
             break;
@@ -86,8 +93,53 @@ void listarcliente(){
 
     for (i = 0; i < user_count; i++)
     {
-        printf("%i | %s", usuario[i].id, usuario[i].nome);
+        printf("ID: %i | Nome:  %s", usuario[i].id, usuario[i].nome);
         printf("\n");
     }
+    printf("\n");
+    printf("Aperte enter para retornar ao menu");
+    getchar();
     
+}
+
+void atualizaruser(){
+
+    if (user_count == 0){
+        printf("Nao ha usuario para atualizar");
+        getchar();
+        return;
+    }
+
+    int cod, atualizar_usuario, i;
+    printf("Digite o código do usuario a ser atualizado: ");
+    scanf("%i", &cod);
+    getchar(); 
+
+    for (i = 0; i < user_count; i++) {
+        if (usuario[i].id == cod) {
+            printf("Atualziar usuario (Código: %d):\n", cod);
+
+            printf("Deseja atualizar este usuario?: ");
+            printf("\n");
+            printf("1 - Sim\n");
+            printf("2 - Nao\n");
+                scanf(" %i", &atualizar_usuario);
+                getchar();
+            
+
+            if (atualizar_usuario== 1) {
+                printf("Novo nome de usuario: ");
+                fgets(usuario[i].nome, 70, stdin);
+                usuario[i].nome[strcspn(usuario[i].nome, "\n")] = '\0'; 
+            }
+
+            printf("usuario atualizado com sucesso.\n");
+            printf("Pressione enter para voltar ao menu...");
+            getchar();
+            return;
+        }
+    }
+    printf("Usuario nao encontrado.\n");
+    printf("Pressione enter para voltar ao menu...");
+    getchar();
 }
