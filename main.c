@@ -18,11 +18,11 @@ void gerenciarVinhos(Vinho *vinhos) {
 
     while (1) {
         printf("\n=== Gerenciar Vinhos ===\n");
-        printf("\t1. Cadastrar Vinho\n");
-        printf("\t2. Atualizar Vinho\n");
-        printf("\t3. Listar Vinhos\n");
-        printf("\t4. Excluir Vinho\n");
-        printf("\t5. Voltar ao menu principal\n");
+        printf("1. Cadastrar Vinho\n");
+        printf("2. Atualizar Vinho\n");
+        printf("3. Listar Vinhos\n");
+        printf("4. Excluir Vinho\n");
+        printf("5. Voltar ao menu principal\n");
         printf("Opção: ");
         scanf("%d", &opcao);
         clearStdin();
@@ -83,7 +83,7 @@ void gerenciarVinhos(Vinho *vinhos) {
 }
 
 int main() {
-    Vinho vinhos[100];
+    Vinho vinhos[5];
     int op, cont;
     
     do{

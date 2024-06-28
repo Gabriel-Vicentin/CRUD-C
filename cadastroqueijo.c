@@ -22,7 +22,7 @@ void menu() {
         printf("2 - Listar Queijos\n");
         printf("3 - Alterar Queijo\n");
         printf("4 - Apagar Queijo\n");
-        printf("5 - Sair do Sistema\n");
+        printf("5 - Voltar\n");
 
         scanf("%d", &opcao);
         getchar(); // Limpa o buffer de entrada

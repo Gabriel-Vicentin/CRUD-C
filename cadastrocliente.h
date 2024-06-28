@@ -13,6 +13,8 @@ void menucad();
 void cadastrouser();
 void listarcliente();
 void atualizaruser();
+void apagarcliente();
+void limparTela1();
 
 int inicio(){
     menucad();
@@ -20,6 +22,7 @@ return 0;
 }
 
     void menucad(){
+        limparTela1();
         int opc;
         do{
             printf("|---------------------------|\n");
@@ -27,7 +30,8 @@ return 0;
             printf("| 1 - Cadastrar usuario     |\n");
             printf("| 2 - Listar usuarios       |\n");
             printf("| 3 - Atualizar usuario     |\n");
-            printf("| 4 - Sair                  |\n");               
+            printf("| 4 - Apagar usuario        |\n");
+            printf("| 5 - Sair                  |\n");               
             printf("|---------------------------|\n");
             printf("| Escolha uma opcao:  ");
                 scanf("%d", &opc);
@@ -47,6 +51,10 @@ return 0;
             break;
 
             case 4:
+                apagarcliente();
+            break;
+
+            case 5:
                 printf("Saindo...\n");
             break;
 
@@ -55,10 +63,11 @@ return 0;
             break;
             }
 
-        }while (opc != 4);
+        }while (opc != 5);
     }
 
 void cadastrouser(){
+    limparTela1();
     int repcad = 0;
     do {
         if (user_count >= 5) {
@@ -88,6 +97,7 @@ void cadastrouser(){
 }
 
 void listarcliente(){
+    limparTela1();
     printf("\n");
     int i;
 
@@ -103,7 +113,7 @@ void listarcliente(){
 }
 
 void atualizaruser(){
-
+    limparTela1();
     if (user_count == 0){
         printf("Nao ha usuario para atualizar");
         getchar();
@@ -142,4 +152,35 @@ void atualizaruser(){
     printf("Usuario nao encontrado.\n");
     printf("Pressione enter para voltar ao menu...");
     getchar();
+}
+
+void apagarcliente(){
+    limparTela1();
+    int id_cliente;
+    printf("Digite o codigo do cliente a ser apagado: ");
+    scanf("%d", &id_cliente);
+
+    for (int i = 0; i < user_count; i++) {
+        if (usuario[i].id == id_cliente) {
+            for (int j = i; j < user_count - 1; j++) {
+                usuario[j] = usuario[j + 1];
+            }
+            user_count--;
+            printf("Cliente apagado com sucesso.\n");
+            printf("Pressione Enter para voltar ao menu...");
+            getchar(); getchar();
+            return;
+        }
+    }
+    printf("Cliente com codigo %d n�o encontrado.\n", id_cliente);
+    printf("Pressione Enter para voltar ao menu...");
+    getchar(); getchar();
+}
+
+void limparTela1() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }

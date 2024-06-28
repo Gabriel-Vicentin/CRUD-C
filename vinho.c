@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 void cadastrarVinho(Vinho *vinho, int *nextId, const char *nome, const char *tipo, float preco) {
     vinho->id = *nextId;
     strcpy(vinho->nome, nome);

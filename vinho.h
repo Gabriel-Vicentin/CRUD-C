@@ -1,9 +1,10 @@
 #ifndef VINHO_H
 #define VINHO_H
+#define MAX_NOME 50
 
 typedef struct {
     int id;
-    char nome[50];
+    char nome[MAX_NOME];
     char tipo[30];
     float preco;
     int ativo;
