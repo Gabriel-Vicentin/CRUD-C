@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cadastro_queijo.h"
+#include "cadastroqueijo.h"
 
 #define MAX_PEDIDOS 100 // Define o número máximo de pedidos que podem ser armazenados
 

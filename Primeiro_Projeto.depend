@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1714262324 source:c:\users\gabri\onedrive\desktop\aula desktop\primeiro_projeto\main.c
-	<stdio.h>
-	<stdlib.h>
-	"cadastro_produto.h"
-    "cadastrocliente.h"
-	"vendas.h"

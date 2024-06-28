@@ -1,16 +1,97 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cadastro_queijo.c"
 #include "cadastrocliente.h"
 #include "vendas.h"
+#include "vinho.h"
+
+int nextVinhoId = 0;
+
+void clearStdin() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
+}
+
+void gerenciarVinhos(Vinho *vinhos) {
+    int opcao, id;
+    char nome[50], tipo[30];
+    float preco;
+
+    while (1) {
+        printf("\n=== Gerenciar Vinhos ===\n");
+        printf("\t1. Cadastrar Vinho\n");
+        printf("\t2. Atualizar Vinho\n");
+        printf("\t3. Listar Vinhos\n");
+        printf("\t4. Excluir Vinho\n");
+        printf("\t5. Voltar ao menu principal\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
+        clearStdin();
+
+        switch (opcao) {
+            case 1:
+                printf("Nome: ");
+                fgets(nome, sizeof(nome), stdin);
+                nome[strcspn(nome, "\n")] = '\0';
+                printf("Tipo: ");
+                fgets(tipo, sizeof(tipo), stdin);
+                tipo[strcspn(tipo, "\n")] = '\0';
+                printf("Preço: ");
+                scanf("%f", &preco);
+                clearStdin();
+                cadastrarVinho(&vinhos[nextVinhoId], &nextVinhoId, nome, tipo, preco);
+                break;
+
+            case 2:
+                printf("ID: ");
+                scanf("%d", &id);
+                clearStdin();
+                if (id >= 0 && id < nextVinhoId && vinhos[id].ativo) {
+                    printf("Novo nome: ");
+                    fgets(nome, sizeof(nome), stdin);
+                    nome[strcspn(nome, "\n")] = '\0';
+                    printf("Novo tipo: ");
+                    fgets(tipo, sizeof(tipo), stdin);
+                    tipo[strcspn(tipo, "\n")] = '\0';
+                    printf("Novo preço: ");
+                    scanf("%f", &preco);
+                    clearStdin();
+                    atualizarVinho(&vinhos[id], nome, tipo, preco);
+                } else {
+                    printf("ID inválido ou vinho não encontrado!\n");
+                }
+                break;
+
+            case 3:
+                printf("=== Lista de Vinhos ===\n");
+                listarVinhos(vinhos, nextVinhoId);
+                break;
+
+            case 4:
+                printf("ID: ");
+                scanf("%d", &id);
+                clearStdin();
+                excluirVinho(vinhos, id, nextVinhoId);
+                break;
+
+            case 5:
+                return;
+
+            default:
+                printf("Opção inválida!\n");
+        }
+    }
+}
 
 int main() {
+    Vinho vinhos[100];
     int op, cont;
+    
     do{
-    printf("escolha uma opcao \n");
-    printf("1 - cadastro usuario \n");
-    printf("2 - Cadastro queijos \n");
-    printf("3 - realizar compra \n");
+    printf("Escolha uma Opcao \n\n");
+    printf("\t1 - Cadastro de Usuario \n");
+    printf("\t2 - Gerenciar Sessao de Vinhos\n");
+    printf("\t3 - Gerenciar Sessao de Queijos \n");
+    printf("\t4 - Realizar uma Compra \n");
         scanf("%i", &op);
 
         switch (op){
@@ -20,10 +101,14 @@ int main() {
             break;
 
         case 2:
+            gerenciarVinhos(vinhos);
+            break;
+
+        case 3:
             menu();
             break;
         
-        case 3:
+        case 4:
             menuCompras();
         break;
 
