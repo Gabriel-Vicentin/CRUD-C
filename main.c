@@ -12,6 +12,7 @@ void clearStdin() {
 }
 
 void gerenciarVinhos(Vinho *vinhos) {
+    limparTela();
     int opcao, id;
     char nome[50], tipo[30];
     float preco;
@@ -83,6 +84,7 @@ void gerenciarVinhos(Vinho *vinhos) {
 }
 
 int main() {
+    limparTela();
     Vinho vinhos[5];
     int op, cont;
     
@@ -124,6 +126,7 @@ int main() {
         printf("|------------------------------------|\n");
         printf("Escolha: ");
             scanf("%i", &cont);
+        limparTela();
     }while (cont == 1);
     return 0;
 }
