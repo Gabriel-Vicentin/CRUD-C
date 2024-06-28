@@ -4,3 +4,4 @@
 	<stdlib.h>
 	"cadastro_produto.h"
     "cadastrocliente.h"
+	"vendas.h"

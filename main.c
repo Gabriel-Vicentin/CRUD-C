@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include "cadastro_produto.h"
 #include "cadastrocliente.h"
+//#include "vendas.h"
 
 int main() {
     int op, cont;
     do{
     printf("escolha uma opcao \n");
     printf("1 - cadastro usuario \n");
-    printf("2 - Cadastro produto \n");
+    printf("2 - Cadastro queijos \n");
+    printf("3 - realizar pedidos \n");
         scanf("%i", &op);
 
         switch (op){
@@ -20,6 +22,10 @@ int main() {
         case 2:
             menu();
             break;
+
+        // case 3:
+        //     pedido();
+        //     break;
 
         default:
             printf("Opcao incorreta\n");

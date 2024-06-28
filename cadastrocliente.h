@@ -24,7 +24,7 @@ return 0;
             printf("   MENU   \n");
             printf("1 - Cadastrar usuario\n");
             printf("2 - Listar usuarios\n");
-            printf("3 - Atualizar cliente");
+            printf("3 - Atualizar cliente\n");
             printf("4 - Sair\n");
             printf("Escolha uma opcao: ");
                 scanf("%d", &opc);
@@ -48,7 +48,7 @@ return 0;
             break;
             }
 
-        }while (opc != 0);
+        }while (opc != 4);
     }
 
 void cadastrouser(){

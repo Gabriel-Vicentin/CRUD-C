@@ -20,7 +20,7 @@ void cadastrarProduto();
 void listarProdutos();
 void alterarProduto();
 void apagarProduto();
-void limparTela();
+void listarProdutosvend();
 
 int comeco() {
     menu();
@@ -31,7 +31,6 @@ void menu() {
     int opcao;
 
     do {
-        limparTela();
         printf("\n==========================\n");
         printf("======Bem vindo(a) =======\n");
         printf("======Sess�o Cadastro=====\n");
@@ -72,7 +71,6 @@ void cadastrarProduto() {
     int resposta_cadastro = 1; // Inicializa como 1 para entrar no loop
 
     while (contador_produtos < MAX_PRODUTOS && resposta_cadastro == 1) {
-        limparTela();
         printf("Cadastrar Produto:\n");
         printf("Nome do produto: ");
         scanf(" %s", produtos[contador_produtos].nome); // Captura o nome at� encontrar uma quebra de linha
@@ -99,7 +97,6 @@ void cadastrarProduto() {
 }
 
 void listarProdutos() {
-    limparTela();
     if (contador_produtos > 0) {
         printf("Lista de Produtos:\n");
         for (int i = 0; i < contador_produtos; i++) {
@@ -112,8 +109,18 @@ void listarProdutos() {
     getchar(); getchar(); // Espera uma entrada do usu�rio para prosseguir
 }
 
+void listarProdutosvend() {
+    if (contador_produtos > 0) {
+        printf("Lista de Produtos:\n");
+        for (int i = 0; i < contador_produtos; i++) {
+            printf("C�digo: %d | Nome: %s | Pre�o: %.2f\n", produtos[i].codigo, produtos[i].nome, produtos[i].preco);
+        }
+    } else {
+        printf("Nao ha produtos cadastrados.\n");
+    }
+}
+
 void alterarProduto() {
-    limparTela();
     int codigo;
     printf("Digite o c�digo do produto a ser alterado: ");
     scanf("%d", &codigo);
@@ -137,7 +144,6 @@ void alterarProduto() {
 }
 
 void apagarProduto() {
-    limparTela();
     int codigo;
     printf("Digite o c�digo do produto a ser apagado: ");
     scanf("%d", &codigo);
@@ -159,10 +165,39 @@ void apagarProduto() {
     getchar(); getchar(); // Espera uma entrada do usu�rio para prosseguir
 }
 
-void limparTela() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
-}
+
+//   void pedido() {
+    
+//         int pedidos[5], cont_pedido, i, rep_pedido;
+
+//                 rep_pedido = 1;
+//                 while (cont_pedido < 5 && rep_pedido == 1){
+//                 printf("\n----------------------------\n");
+//                 printf("------   Produtos    -------  \n");
+//                 printf("----------------------------  \n");
+                
+//                 listarProdutosvend();
+//                 if (produtos == 0){
+//                         break;
+//                 }
+                
+//                 printf("\n");
+
+//                 printf("Selecione o codigo do produto que deseja comprar\n");
+//                         scanf("%i \n", pedidos[cont_pedido]);
+//                         cont_pedido++;
+
+//                 if (cont_pedido < 5) {
+//                         printf("Deseja realizar outra compra?\n");
+//                         printf("1 - sim\n");
+//                         printf("2 - nao\n");
+//                                 scanf("%i", &rep_pedido); 
+//                 }
+
+//                 for (i = 0; i < cont_pedido; i++)
+//                 {
+//                     printf("%s", produtos[i].nome);
+//                 }
+                                
+// }
+// }
