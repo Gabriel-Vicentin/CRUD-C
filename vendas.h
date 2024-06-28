@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cadastro_queijo.h"
+#include <time.h>
+#include "cadastroqueijo.h"
+#include "vinho.h"
 
 #define MAX_PEDIDOS 100 // Define o número máximo de pedidos que podem ser armazenados
 
@@ -22,6 +24,14 @@ Pedido pedidos[MAX_PEDIDOS];
 int num_pedidos = 0;
 
 void listarProdutosvend() {
+    if (contador_produtos > 0) {
+        for (int i = 0; i < contador_produtos; i++) {
+            printf("%d - %s\n", produtos[i].codigo, produtos[i].nome);
+        }
+    } else {
+        printf("Não há produtos disponíveis para venda.\n");
+    }
+
     if (contador_produtos > 0) {
         for (int i = 0; i < contador_produtos; i++) {
             printf("%d - %s\n", produtos[i].codigo, produtos[i].nome);
@@ -124,6 +134,8 @@ void listarPedidos() {
 }
 
 void finalizarCompra() {
+    float preco;
+    char nome[MAX_NOME];
     limparTela();
 
     if (num_pedidos == 0) {
@@ -187,10 +199,33 @@ void finalizarCompra() {
         printf("Opção de pagamento inválida.\n");
     }
 
+     // Obtendo a data e hora atual
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+
+    // Abrindo o arquivo para escrita
+    FILE *arquivo = fopen("registro_precos.txt", "a");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+    }
+
+    // Escrevendo os dados no arquivo
+    fprintf(arquivo, "Produto: %s\n", nome);
+    fprintf(arquivo, "Preço total: %.2f\n", valor_total);
+    fprintf(arquivo, "Data: %02d-%02d-%04d\n\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+
+    // Fechando o arquivo
+    fclose(arquivo);
+
+    printf("Dados registrados com sucesso!\n");
+
+
     printf("Compra finalizada com sucesso.\n");
     printf("Pressione Enter para voltar ao menu...");
     getchar(); // Espera uma entrada do usuário para prosseguir
 }
+
+
 
 void menuCompras() {
     int opcao;
